@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/08/31 15:30:57 by mpatrao          ###   ########.fr       */
+/*   Created: 2022/11/03 15:10:22 by mpatrao           #+#    #+#             */
+/*   Updated: 2023/05/17 15:54:55 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include "libft.h"
-
-typedef struct s_data
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	**map;
-	int		c_floor;
-	int		c_ceiling;
-	char	texture[4];
+	char	*p;
 
-}	t_data;
-
-
-//parser.c
-int		parser(int ac, char **av);
-
-#endif
+	if (!s1 || !s2)
+		return (NULL);
+	p = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!p)
+		return (NULL);
+	ft_strlcpy(p, s1, ft_strlen(s1) + 1);
+	ft_strlcat(p, s2, ft_strlen(s1) + ft_strlen(s2) + 1);
+	return (p);
+}

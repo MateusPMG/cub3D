@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/08/31 15:30:57 by mpatrao          ###   ########.fr       */
+/*   Created: 2022/10/25 13:52:37 by mpatrao           #+#    #+#             */
+/*   Updated: 2022/11/02 13:03:18 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include "libft.h"
-
-typedef struct s_data
+size_t	ft_strlen(const char *s)
 {
-	char	**map;
-	int		c_floor;
-	int		c_ceiling;
-	char	texture[4];
+	int	i;
 
-}	t_data;
-
-
-//parser.c
-int		parser(int ac, char **av);
-
-#endif
+	i = 0;
+	while (s[i] != 0)
+		i++;
+	return (i);
+}

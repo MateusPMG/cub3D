@@ -1,35 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/08/31 15:30:57 by mpatrao          ###   ########.fr       */
+/*   Created: 2022/11/01 13:57:53 by mpatrao           #+#    #+#             */
+/*   Updated: 2022/11/03 13:17:25 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include "libft.h"
-
-typedef struct s_data
+char	*ft_strdup(const char *s)
 {
-	char	**map;
-	int		c_floor;
-	int		c_ceiling;
-	char	texture[4];
+	char	*p;
+	int		l;
 
-}	t_data;
-
-
-//parser.c
-int		parser(int ac, char **av);
-
-#endif
+	l = ft_strlen(s) + 1;
+	p = (char *)malloc(l * sizeof(char));
+	if (!p)
+		return (NULL);
+	ft_memcpy(p, s, l);
+	return (p);
+}

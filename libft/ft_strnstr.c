@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.h                                            :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/08/31 15:30:57 by mpatrao          ###   ########.fr       */
+/*   Created: 2022/10/31 13:24:23 by mpatrao           #+#    #+#             */
+/*   Updated: 2022/11/16 17:15:43 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <stdio.h>
-# include <stdlib.h>
-# include <fcntl.h>
-# include "libft.h"
-
-typedef struct s_data
+char	*ft_strnstr(const char	*big, const char *little, size_t len)
 {
-	char	**map;
-	int		c_floor;
-	int		c_ceiling;
-	char	texture[4];
+	size_t	i;
 
-}	t_data;
-
-
-//parser.c
-int		parser(int ac, char **av);
-
-#endif
+	if (ft_strlen(little) == 0)
+		return ((char *)big);
+	i = 0;
+	while (i < len && big[i])
+	{
+		if (ft_strncmp((char *)&big[i], little, ft_strlen(little)) == 0)
+		{
+			if (i + ft_strlen(little) > len)
+				return (NULL);
+			return ((char *)&big[i]);
+		}
+		i++;
+	}
+	return (NULL);
+}
