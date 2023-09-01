@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/08/31 15:30:57 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/09/01 16:19:04 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ typedef struct s_data
 
 
 //parser.c
-int		parser(int ac, char **av);
+int	parser(int ac, char **av, t_data *data);
+
+//utils.c
+int	skip_spaces(char *str, int i);
+
 
 #endif

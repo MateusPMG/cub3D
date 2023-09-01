@@ -6,8 +6,15 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 14:37:36 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/08/31 14:53:31 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/09/01 16:18:16 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+int	skip_spaces(char *str, int i)
+{
+	while (ft_isspace(i))
+		i++;
+	return (i);
+}

@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 12:25:30 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/05/25 14:04:01 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/09/01 15:39:59 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,7 @@ char	*ft_freeline(char *fl);
 int		ft_printf(const char *format, ...);
 void	*ft_calloc(size_t nelem, size_t elsize);
 void	ft_bzero(void *s, size_t n);
+int		ft_isspace(int c);
+
 
 #endif

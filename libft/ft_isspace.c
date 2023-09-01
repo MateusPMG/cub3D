@@ -1,33 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3D.c                                            :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/24 15:39:25 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/01 15:56:53 by mpatrao          ###   ########.fr       */
+/*   Created: 2023/09/01 15:39:07 by mpatrao           #+#    #+#             */
+/*   Updated: 2023/09/01 15:39:37 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3D.h"
+#include "libft.h"
 
-void	init_data(t_data *data)
+int	ft_isspace(int c)
 {
-	data->c_ceiling = 0;
-	data->c_floor = 0;
-}
-
-int	main(int ac, char **av)
-{
-	t_data	*data;
-
-	if (ac != 2)
-		return (write(1, "Error\n-Wrong number of args", 27));
-	init_data(data);
-	if (!parser(ac, av, data))
-	{
-		printf();
-		free_data();
-	}
+	return (c == ' ' || c == '\f' || c == '\n'
+		|| c == '\r' || c == '\t' || c == '\v');
 }
