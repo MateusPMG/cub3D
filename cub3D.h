@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/01 16:19:04 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/09/04 15:00:22 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,16 @@ typedef struct s_data
 
 }	t_data;
 
-
 //parser.c
-int	parser(int ac, char **av, t_data *data);
+int		parser(int ac, char **av, t_data *data);
+
+//parser_utils.c
+int		fill_textures(t_data *data, char *line, int i, int index);
+int		fill_colours(t_data *data, char *line, int i, int index);
 
 //utils.c
-int	skip_spaces(char *str, int i);
-
+int		skip_spaces(char *str, int i);
+int		print_error(char *str);
+int		free_double(char ***array);
 
 #endif
