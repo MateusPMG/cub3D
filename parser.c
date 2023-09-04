@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:05:20 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/04 15:41:18 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/09/04 16:01:56 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,6 @@ int	check_cub(char **av)
 
 	len = ft_strlen(av[1]);
 	if (!ft_strncmp(av[1][len - 4], ".cub", 4))
-		return (1);
-	return (0);
-}
-
-//checks if data has been filled or not
-int	check_done(t_data *data)
-{
-	if (data->c_ceiling != -1 && data->c_floor != -1 && data->texture[0]
-		&& data->texture[1] && data->texture[2] && data->texture[3])
 		return (1);
 	return (0);
 }
@@ -69,6 +60,7 @@ int	check_file_data(char **av, t_data *data)
 			return (print_error("Not enough parameters"));
 		check_params(buffer, data);
 		free(buffer);
+		data->gnl_x++;
 		if (check_done(data))
 			break ;
 	}
@@ -77,6 +69,12 @@ int	check_file_data(char **av, t_data *data)
 		return (0);
 	else
 		return (1);
+}
+
+int	check_map(char **av, t_data *data)
+{
+	alloc_map(av, data);
+	
 }
 
 int	parser(int ac, char **av, t_data *data)

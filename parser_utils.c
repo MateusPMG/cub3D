@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:21:00 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/04 15:20:26 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/09/04 16:06:59 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,26 @@ int	fill_colours(t_data *data, char *line, int i, int index)
 				+ (ft_atoi(tmp[2])));
 	free_double(&tmp);
 	return (0);
+}
+
+//checks if data has been filled or not
+int	check_done(t_data *data)
+{
+	if (data->c_ceiling != -1 && data->c_floor != -1 && data->texture[0]
+		&& data->texture[1] && data->texture[2] && data->texture[3])
+		return (1);
+	return (0);
+}
+
+int	alloc_map(t_data *data, char **av)
+{
+	int		mapfd;
+	char	*buffer;
+
+	mapfd = open(av[1], O_RDONLY, 0644);
+	while (1)
+	{
+		buffer = get_next_line(mapfd);
+		
+	}
 }
