@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:21:00 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/04 16:06:59 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/09/06 16:34:59 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,24 @@ int	alloc_map(t_data *data, char **av)
 {
 	int		mapfd;
 	char	*buffer;
+	int		v;
 
+	v = data->gnl_x;
 	mapfd = open(av[1], O_RDONLY, 0644);
 	while (1)
 	{
+		if (v <= 0 && *buffer != '\0')
+			break ;
+		buffer = get_next_line(mapfd);
+		v--;
+	}
+	v = 0;
+	while (1)
+	{
+		if ()
+			;
+		if (v < ft_strlen(buffer))
+			v = ft_strlen(buffer);
 		buffer = get_next_line(mapfd);
 		
 	}
