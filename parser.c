@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:05:20 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/04 16:01:56 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/09/12 16:00:35 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,8 +73,12 @@ int	check_file_data(char **av, t_data *data)
 
 int	check_map(char **av, t_data *data)
 {
-	alloc_map(av, data);
-	
+	if (alloc_map(av, data))
+		return (1);
+	if (fill_map(av, data))
+		return (1);
+	if (validate_map(data))
+		return (1);
 }
 
 int	parser(int ac, char **av, t_data *data)
@@ -84,5 +88,5 @@ int	parser(int ac, char **av, t_data *data)
 	if (!check_file_data(av, data))
 		return (write(1, "Error\n> invalid file data\n", 26));
 	if (!check_map(av, data))
-		;
+		return (1);
 }

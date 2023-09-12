@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:21:00 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/06 16:34:59 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/09/12 15:57:44 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,28 @@ int	check_done(t_data *data)
 	return (0);
 }
 
+int	alloc_map_2(int v, char *buffer, int mapfd, t_data *data)
+{
+	v = 0; 
+	while (1)
+	{
+		if (*buffer)
+			break ;
+		if (!buffer[0])
+			return (print_error("Invalid map: empty line"));
+		free(buffer);
+		v++;
+		buffer = get_next_line(mapfd);
+	}
+	if (!v)
+		return (print_error("Invalid map: no map"));
+	else
+		data->map = malloc(sizeof(char *) * v + 1);
+	data->map[v] = 0;
+	close(mapfd);
+	return (0);
+}
+
 int	alloc_map(t_data *data, char **av)
 {
 	int		mapfd;
@@ -75,19 +97,15 @@ int	alloc_map(t_data *data, char **av)
 	mapfd = open(av[1], O_RDONLY, 0644);
 	while (1)
 	{
-		if (v <= 0 && *buffer != '\0')
+		if (v-- <= 0 && *buffer != '\0')
 			break ;
+		if (buffer)
+			free(buffer);
 		buffer = get_next_line(mapfd);
-		v--;
 	}
-	v = 0;
-	while (1)
-	{
-		if ()
-			;
-		if (v < ft_strlen(buffer))
-			v = ft_strlen(buffer);
-		buffer = get_next_line(mapfd);
-		
-	}
+	if (alloc_map_2(v, buffer, mapfd, data))
+		return (1);
+	if (buffer)
+		free(buffer);
+	return (0);
 }
