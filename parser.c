@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:05:20 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/12 16:00:35 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/09/13 14:02:30 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	check_cub(char **av)
 	int	len;
 
 	len = ft_strlen(av[1]);
-	if (!ft_strncmp(av[1][len - 4], ".cub", 4))
+	if (!ft_strncmp(&av[1][len - 4], ".cub", 4))
 		return (1);
 	return (0);
 }

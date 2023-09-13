@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 14:37:36 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/04 15:24:09 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/09/13 14:02:14 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,10 @@ int	free_double(char ***array)
 	free(*array);
 	*array = 0;
 	return (1);
+}
+
+int	free_data(t_data *data)
+{
+	free_double(&data->map);
+	return (0);
 }

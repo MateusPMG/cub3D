@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/06 16:36:49 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/09/13 13:58:41 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
-# include "libft.h"
+# include "libft/libft.h"
 
 typedef struct s_data
 {
@@ -39,10 +39,10 @@ int		fill_textures(t_data *data, char *line, int i, int index);
 int		fill_colours(t_data *data, char *line, int i, int index);
 int		check_done(t_data *data);
 
-
 //utils.c
 int		skip_spaces(char *str, int i);
 int		print_error(char *str);
 int		free_double(char ***array);
+int		free_data(t_data *data);
 
 #endif
