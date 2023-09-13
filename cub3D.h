@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/13 13:58:41 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/09/13 14:24:33 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_data
 	char	**map;
 	int		c_floor;
 	int		c_ceiling;
-	char	texture[4];
+	char	*texture[4];
 	int		gnl_x;
 	int		x;
 	int		y;
@@ -32,12 +32,17 @@ typedef struct s_data
 }	t_data;
 
 //parser.c
-int		parser(int ac, char **av, t_data *data);
+int		parser(char **av, t_data *data);
 
 //parser_utils.c
 int		fill_textures(t_data *data, char *line, int i, int index);
 int		fill_colours(t_data *data, char *line, int i, int index);
 int		check_done(t_data *data);
+int		alloc_map(t_data *data, char **av);
+
+//parser_utils_2.c
+int		fill_map(char **av, t_data *data);
+int		validate_map(t_data *data);
 
 //utils.c
 int		skip_spaces(char *str, int i);

@@ -1,32 +1,41 @@
 NAME = cub3D
-LIBFT = libft/libft.a
-LIBFT_PATH = libft/
-LIBMLX_DIR = ./mlx_linux
-MLX_INCLUDE = -Imlx_linux
 SRC = cub3D.c parser.c parser_utils.c parser_utils_2.c utils.c
-RM = @rm -f
-CC = @cc
-CFLAGS = -Wall -Wextra -Werror -g -o cub3D -fsanitize=address
-MLX_FLAGS = 	-L$(LIBMLX_DIR) -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz
+LIBFT_DIR	= libft
+LIBFT		= libft/libft.a
+MLX_DIR		= ./mlx_linux
+MLX_INCLUDE = -Imlx_linux
+CC			= @cc
+CFLAGS		= -Wall -Wextra -Werror -g3 -fsanitize=address,undefined
+MLX_FLAGS 	= -L$(MLX_DIR) -lmlx -lmlx_Linux -L/usr/lib -lXext -lX11 -lm
 
-OBJ = $(SRC:.c=.o)
+all:		$(NAME)
 
-all:			$(NAME)
-
-$(NAME):		$(OBJ)	
-				@$(MAKE) --no-print-directory -C $(LIBMLX_DIR)
-				@$(MAKE) --no-print-directory -C $(LIBFT_PATH)
-				$(CC) $(CFLAGS) $(OBJ) $(MLX_FLAGS) -o $(@) $(LIBFT) 
+$(NAME):	$(SRC)
+			@$(MAKE) --no-print-directory -C $(LIBFT_DIR)
+			@$(MAKE) --no-print-directory -C $(MLX_DIR)
+			$(CC) $(CFLAGS) $(^) $(MLX_FLAGS) -o $(@) $(LIBFT)
 
 clean:
-				make clean -C $(LIBFT_PATH)
-				make clean -C $(LIBMLX_DIR)
-				$(RM) $(OBJ)
+			@$(MAKE) --no-print-directory -C $(LIBFT_DIR) clean
+			@$(MAKE) --no-print-directory -C $(MLX_DIR) clean
 
-fclean: 		clean
-				make fclean -C $(LIBFT_PATH)
-				$(RM) $(NAME)
+fclean:		clean
+			@$(MAKE) --no-print-directory -C $(LIBFT_DIR) fclean
+			@$(MAKE) --no-print-directory -C $(MLX_DIR) clean
+			@rm -f $(NAME)
 
-re:		fclean	$(NAME) $(OBJ)
+good:		all
+			@for file in ./maps/good/*; do \
+				echo "$$file"; \
+				./$(NAME) $$file; \
+			done
 
-.PHONY: all clean fclean re
+wrong:		all
+			@for file in ./maps/wrong/*; do \
+				echo "$$file"; \
+				./$(NAME) $$file; \
+			done
+
+re:			fclean all
+
+.PHONY:		all clean fclean re

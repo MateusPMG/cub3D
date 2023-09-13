@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:21:00 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/12 15:57:44 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/09/13 14:27:33 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	fill_textures(t_data *data, char *line, int i, int index)
 		return (print_error("Path not in xpm format"));
 	if (access(&line[i], R_OK))
 		return (print_error("Cant access path"));
-	data->texture[index] = ft_strdup(&line[i]);
+	data->texture[index] = ft_substr(line, i, ft_strlen(line) - i);
 	return (0);
 }
 
@@ -34,7 +34,7 @@ int	fill_colours(t_data *data, char *line, int i, int index)
 	int		m;
 
 	tmp = ft_split(&line[i], ',');
-	if (!tmp[0] || !tmp[1] || !tmp[2] || tmp[3] && free_double(&tmp))
+	if (!tmp[0] || !tmp[1] || !tmp[2] || (tmp[3] && free_double(&tmp)))
 		return (print_error("Wrong colour format"));
 	m = -1;
 	j = -1;
@@ -50,7 +50,7 @@ int	fill_colours(t_data *data, char *line, int i, int index)
 		data->c_floor = ((ft_atoi(tmp[0]) << 16) + (ft_atoi(tmp[1]) << 8)
 				+ (ft_atoi(tmp[2])));
 	else
-		data->c_ceiling = (ft_atoi(tmp[0]) << 16 + ft_atoi(tmp[1]) << 8
+		data->c_ceiling = ((ft_atoi(tmp[0]) << 16) + (ft_atoi(tmp[1]) << 8)
 				+ (ft_atoi(tmp[2])));
 	free_double(&tmp);
 	return (0);
