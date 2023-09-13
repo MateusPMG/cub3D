@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 15:28:57 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/13 14:28:01 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/09/13 14:57:32 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,5 @@ int	fill_map(char **av, t_data *data)
 	data->map[++i] = buffer;
 	if (fill_map_2(data, mapfd, buffer, i))
 		return (1);
-	return (0);
-}
-
-int	validate_map(t_data *data)
-{
 	return (0);
 }
