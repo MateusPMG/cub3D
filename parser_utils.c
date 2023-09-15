@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:21:00 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/13 15:04:14 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/09/15 13:25:55 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,10 @@ int	alloc_map_2(int v, char *buffer, int mapfd, t_data *data)
 	if (!v)
 		return (print_error("Invalid map: no map"));
 	else
+	{
+		data->map_y = v;
 		data->map = malloc(sizeof(char *) * v + 1);
+	}
 	data->map[v] = 0;
 	close(mapfd);
 	return (0);
