@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/15 13:26:09 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/09/19 16:33:32 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,9 @@ int		alloc_map(t_data *data, char **av);
 //parser_utils_2.c
 int		fill_map(char **av, t_data *data);
 int		validate_map(t_data *data);
+
+//validate_map_utils.c
+int		check_walls(t_data *data, int j, int i);
 
 //utils.c
 int		skip_spaces(char *str, int i);
