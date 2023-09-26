@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 12:25:30 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/15 13:48:49 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/09/21 16:29:59 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void	ft_bzero(void *s, size_t n);
 int		ft_isspace(int c);
 int		ft_atoi(const char *nptr);
 int		ft_isdigit(int c);
-char	*ft_strjoin_free(char const *s1, char const *s2);
-
+char	*ft_strjoin_free(char *s1, char const *s2);
 
 #endif

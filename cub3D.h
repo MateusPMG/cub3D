@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/19 16:33:32 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/09/21 17:23:18 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ typedef struct s_data
 	int		c_floor;
 	int		c_ceiling;
 	char	*texture[4];
-	int		map_x;
-	int		map_y;
+	size_t	map_x;
+	size_t	map_y;
 	int		gnl_x;
 	int		x;
 	int		y;

@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 16:08:33 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/20 15:13:52 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/09/21 17:24:56 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,14 @@ int	walkable(char c)
 
 int	check_walls(t_data *data, int j, int i)
 {
-	int	a;
-	int	b;
-	int	c;
-	int	d;
+	size_t	a;
+	size_t	b;
+	size_t	c;
+	size_t	d;
 
 	a = i;
-	while (a > 0 && (a < data->map_y - 1 && data->map[++a][j]) && walkable(data->map[a][j]))
+	while (a > 0 && (a < data->map_y - 1 && data->map[++a][j])
+		&& walkable(data->map[a][j]))
 		continue ;
 	b = i;
 	while (b > 0 && data->map[--b][j] && walkable(data->map[b][j]))
@@ -38,8 +39,9 @@ int	check_walls(t_data *data, int j, int i)
 	d = j;
 	while (d > 0 && data->map[i][--d] && walkable(data->map[i][d]))
 		continue ;
-	if (!data->map[i][d] || !data->map[i][c] || !data->map[b][j] || !data->map[a][j]
-		|| data->map[i][d] != '1' || data->map[i][c] != '1' || data->map[b][j] != '1'
+	if (!data->map[i][d] || !data->map[i][c] || !data->map[b][j]
+		|| !data->map[a][j] || data->map[i][d] != '1'
+		|| data->map[i][c] != '1' || data->map[b][j] != '1'
 		|| (a == data->map_y - 1 && data->map[a][j] != '1'))
 		return (1);
 	return (0);
