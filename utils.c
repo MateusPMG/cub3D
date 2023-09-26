@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 14:37:36 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/13 14:02:14 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/09/26 15:18:27 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,25 +25,26 @@ int	print_error(char *str)
 	return (1);
 }
 
-int	free_double(char ***array)
+int	free_double(char **array)
 {
 	int	i;
 
-	if (!(*array))
+	if (!(array))
 		return (1);
 	i = -1;
-	while ((*array)[++i])
+	while ((array)[++i])
 	{
-		if ((*array)[i])
-			free((*array)[i]);
+		if ((array)[i])
+			free((array)[i]);
 	}
-	free(*array);
-	*array = 0;
+	free(array);
+	//*array = 0;
 	return (1);
 }
 
 int	free_data(t_data *data)
 {
-	free_double(&data->map);
+	free_double(data->map);
+	free(data);
 	return (0);
 }

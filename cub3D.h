@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/21 17:23:18 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/09/26 15:07:15 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int		check_walls(t_data *data, int j, int i);
 //utils.c
 int		skip_spaces(char *str, int i);
 int		print_error(char *str);
-int		free_double(char ***array);
+int		free_double(char **array);
 int		free_data(t_data *data);
 
 #endif
