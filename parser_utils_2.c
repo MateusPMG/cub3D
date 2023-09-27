@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 15:28:57 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/13 14:57:32 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/09/27 17:05:24 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,12 @@ int	fill_map(char **av, t_data *data)
 
 	v = data->gnl_x;
 	mapfd = open(av[1], O_RDONLY, 0644);
+	buffer = 0;
 	while (1)
 	{
 		if (v-- <= 0 && *buffer != '\0')
 			break ;
-		if (buffer)
+		if (buffer != 0)
 			free(buffer);
 		buffer = get_next_line(mapfd);
 	}
@@ -48,4 +49,16 @@ int	fill_map(char **av, t_data *data)
 	if (fill_map_2(data, mapfd, buffer, i))
 		return (1);
 	return (0);
+}
+
+char	*skip_empty_lines(char *buffer, int *mapfd)
+{
+	while (1)
+	{
+		if (!buffer[0])
+			buffer = get_next_line(*mapfd);
+		if (buffer[0])
+			break ;
+	}
+	return (buffer);
 }

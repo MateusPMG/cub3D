@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:21:00 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/26 15:35:29 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/09/27 17:00:15 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,14 @@ int	fill_textures(t_data *data, char *line, int i, int index)
 	if (data->texture[index])
 		return (print_error("Path duped"));
 	i = skip_spaces(line, i);
+	i++;
 	if (!line[i])
 		return (print_error("Invalid path to texture"));
 	if (ft_strncmp(&line[ft_strlen(line) - 4], ".xpm", 4))
 		return (print_error("Path not in xpm format"));
 	if (access(&line[i], R_OK) == -1)
 	{
-		print_error("Cant access path");
+		print_error("Textures: Cant access path");
 		free_data(data);
 		exit (1);
 	}
@@ -74,7 +75,7 @@ int	alloc_map_2(int v, char *buffer, int mapfd, t_data *data)
 	v = 0;
 	while (1)
 	{
-		if (*buffer)
+		if (!buffer)
 			break ;
 		if (!buffer[0])
 			return (print_error("Invalid map: empty line"));
@@ -89,7 +90,7 @@ int	alloc_map_2(int v, char *buffer, int mapfd, t_data *data)
 	else
 	{
 		data->map_y = v;
-		data->map = malloc(sizeof(char *) * v + 1);
+		data->map = (char **)malloc(sizeof(char *) * (v + 1));
 	}
 	data->map[v] = 0;
 	close(mapfd);
@@ -104,17 +105,20 @@ int	alloc_map(t_data *data, char **av)
 
 	v = data->gnl_x;
 	mapfd = open(av[1], O_RDONLY, 0644);
+	buffer = 0;
 	while (1)
 	{
-		if (v-- <= 0 && *buffer != '\0')
+		if (v-- < 0 && *buffer == '\0' && buffer)
 			break ;
 		if (buffer != 0)
 			free(buffer);
 		buffer = get_next_line(mapfd);
 	}
+	if (!buffer[0])
+		buffer = skip_empty_lines(buffer, &mapfd);
 	if (alloc_map_2(v, buffer, mapfd, data))
 		return (1);
-	if (buffer)
-		free(buffer);
+	//if (buffer)
+		//free(buffer);
 	return (0);
 }
