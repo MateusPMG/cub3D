@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:05:20 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/26 15:34:24 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/03 14:11:07 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ int	parser(char **av, t_data *data)
 		return (write(1, "Error\n> wrong file format\n", 26));
 	if (!check_file_data(av, data))
 		return (write(1, "Error\n> invalid file data\n", 26));
-	if (!check_map(av, data))
+	if (check_map(av, data))
 		return (1);
 	return (0);
 }

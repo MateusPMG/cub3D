@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 15:28:57 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/27 17:05:24 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/03 12:46:25 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ int	fill_map_2(t_data *data, int mapfd, char *buffer, int i)
 	{
 		buffer = get_next_line(mapfd);
 		if (!buffer)
-			return (print_error("Fatal error"));
+			break ;
 		data->map[++i] = buffer;
 		if (data->map[i][0] == '\0')
-			break ;
+			return (print_error("Map: empty line"));
 	}
 	return (0);
 }
@@ -38,12 +38,14 @@ int	fill_map(char **av, t_data *data)
 	buffer = 0;
 	while (1)
 	{
-		if (v-- <= 0 && *buffer != '\0')
+		if (v-- <= 0 && *buffer == '\0' && buffer)
 			break ;
 		if (buffer != 0)
 			free(buffer);
 		buffer = get_next_line(mapfd);
 	}
+	if (!buffer[0])
+		buffer = skip_empty_lines(buffer, &mapfd);
 	i = -1;
 	data->map[++i] = buffer;
 	if (fill_map_2(data, mapfd, buffer, i))
@@ -56,7 +58,10 @@ char	*skip_empty_lines(char *buffer, int *mapfd)
 	while (1)
 	{
 		if (!buffer[0])
+		{
+			free(buffer);
 			buffer = get_next_line(*mapfd);
+		}
 		if (buffer[0])
 			break ;
 	}

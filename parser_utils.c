@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:21:00 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/27 17:00:15 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/03 13:13:30 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,10 @@ int	alloc_map_2(int v, char *buffer, int mapfd, t_data *data)
 			break ;
 		if (!buffer[0])
 			return (print_error("Invalid map: empty line"));
-		free(buffer);
 		v++;
 		if (ft_strlen(buffer) > data->map_x)
 			data->map_x = ft_strlen(buffer);
+		free(buffer);
 		buffer = get_next_line(mapfd);
 	}
 	if (!v)
@@ -108,11 +108,11 @@ int	alloc_map(t_data *data, char **av)
 	buffer = 0;
 	while (1)
 	{
-		if (v-- < 0 && *buffer == '\0' && buffer)
+		buffer = get_next_line(mapfd);
+		if (v-- <= 0 && *buffer == '\0' && buffer)
 			break ;
 		if (buffer != 0)
 			free(buffer);
-		buffer = get_next_line(mapfd);
 	}
 	if (!buffer[0])
 		buffer = skip_empty_lines(buffer, &mapfd);

@@ -5,7 +5,7 @@
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/cub3D",
-            "args": ["maps/good/bestmap.cub"],
+            "args": ["maps/wrong/color_invalid_rgb.cub"],
             "stopAtEntry": false,
             "cwd": "${fileDirname}",
             "environment": [],
