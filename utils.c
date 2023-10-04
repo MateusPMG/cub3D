@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 14:37:36 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/26 15:18:27 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/04 14:02:25 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,11 @@ int	free_double(char **array)
 
 int	free_data(t_data *data)
 {
+	int	i;
+
+	i = -1;
+	while (++i < 4 && data->texture[i])
+		free(data->texture[i]);
 	free_double(data->map);
 	free(data);
 	return (0);

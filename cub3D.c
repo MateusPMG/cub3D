@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:25 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/09/26 15:12:38 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/04 15:07:46 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	init_data(t_data *data)
 int	main(int ac, char **av)
 {
 	t_data	*data;
+	int		i;
 
 	data = (t_data *)ft_calloc(1, sizeof(t_data));
 	if (ac != 2)
@@ -33,6 +34,17 @@ int	main(int ac, char **av)
 		return (write(1, "Error\n-Wrong number of args\n", 28));
 	}
 	init_data(data);
-	if (!parser(av, data))
+	if (parser(av, data))
+	{
+		//i = -1;
+		//while (data->map[++i])
+			//printf(":%s:\n", data->map[i]);
 		free_data(data);
+		return (1);
+	}
+	i = -1;
+	while (data->map[++i])
+		printf(":%s:\n", data->map[i]);
+	free_data(data);
+	return (0);
 }
