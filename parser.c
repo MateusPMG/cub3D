@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:05:20 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/03 14:11:07 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/03 16:09:19 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ int	check_cub(char **av)
 	return (0);
 }
 
-int	check_params(char *line, t_data *data)
+int	
+check_params(char *line, t_data *data)
 {
 	int	i;
 	int	len;
