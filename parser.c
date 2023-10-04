@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:05:20 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/04 15:21:23 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/04 17:35:06 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,13 @@ int	check_file_data(char **av, t_data *data)
 	while (1)
 	{
 		buffer = get_next_line(mapfd);
+		if (!buffer)
+			break ;
 		if (buffer[0] && check_params(buffer, data))
 		{
 			free(buffer);
-			break ;
+			close (mapfd);
+			return (2);
 		}
 		free(buffer);
 		data->gnl_x++;
@@ -88,9 +91,17 @@ int	check_map(char **av, t_data *data)
 
 int	parser(char **av, t_data *data)
 {
+	int	i;
+
+	i = 3;
 	if (!check_cub(av))
 		return (1);
-	if (!check_file_data(av, data))
+	i = check_file_data(av, data);
+	//if (check_file_format(av, data))
+		//return (1);
+	if (i == 0)
+		return (print_error("wrong parameters"));
+	else if (i == 2)
 		return (1);
 	if (check_map(av, data))
 		return (1);

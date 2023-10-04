@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:21:00 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/04 15:20:17 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/04 17:40:44 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,30 +34,30 @@ int	fill_textures(t_data *data, char *line, int i, int index)
 
 int	fill_colours(t_data *data, char *line, int i, int index)
 {
-	char	**tmp;
+	char	**t;
 	int		j;
 	int		m;
 
-	tmp = ft_split(&line[i], ',');
-	if (!tmp[0] || !tmp[1] || !tmp[2] || (tmp[3] && free_double(tmp)))
+	t = ft_split(&line[i], ',');
+	if ((!t[0] || !t[1] || !t[2] || t[3]) && free_double(t))
 		return (print_error("Wrong colour format"));
 	j = -1;
-	while (tmp[++j])
+	while (t[++j])
 	{
-		if (ft_strlen(tmp[j]) > 3 || ft_atoi(tmp[j]) > 255)
+		if ((ft_strlen(t[j]) > 3 || ft_atoi(t[j]) > 255) && free_double(t))
 			return (print_error("Invalid colour value"));
 		m = -1;
-		while (tmp[j][++m])
-			if (!ft_isdigit(tmp[j][m]) && free_double(tmp))
+		while (t[j][++m])
+			if (!ft_isdigit(t[j][m]) && free_double(t))
 				return (print_error("Invalid colour value"));
 	}
 	if (index == 0)
-		data->c_floor = ((ft_atoi(tmp[0]) << 16) + (ft_atoi(tmp[1]) << 8)
-				+ (ft_atoi(tmp[2])));
+		data->c_floor = ((ft_atoi(t[0]) << 16) + (ft_atoi(t[1]) << 8)
+				+ (ft_atoi(t[2])));
 	else
-		data->c_ceiling = ((ft_atoi(tmp[0]) << 16) + (ft_atoi(tmp[1]) << 8)
-				+ (ft_atoi(tmp[2])));
-	free_double(tmp);
+		data->c_ceiling = ((ft_atoi(t[0]) << 16) + (ft_atoi(t[1]) << 8)
+				+ (ft_atoi(t[2])));
+	free_double(t);
 	return (0);
 }
 
@@ -77,7 +77,7 @@ int	alloc_map_2(int v, char *buffer, int mapfd, t_data *data)
 	{
 		if (!buffer)
 			break ;
-		if (!buffer[0])
+		if (!buffer[0] && return_free(buffer))
 			return (print_error("Invalid map: empty line"));
 		v++;
 		if (ft_strlen(buffer) > data->map_x)

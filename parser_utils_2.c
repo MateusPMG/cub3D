@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 15:28:57 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/03 12:46:25 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/04 17:39:58 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,35 @@ char	*skip_empty_lines(char *buffer, int *mapfd)
 			break ;
 	}
 	return (buffer);
+}
+
+int	check_file_format(char **av, t_data *data)
+{
+	int		mapfd;
+	int		v;
+	char	*buffer;
+
+	v = data->gnl_x;
+	mapfd = open(av[1], O_RDONLY, 0644);
+	buffer = 0;
+	while (1)
+	{
+		if (v-- < -2 && buffer)
+			break ;
+		if (buffer != 0)
+			free(buffer);
+		buffer = get_next_line(mapfd);
+	}
+	if (buffer[0])
+	{
+		free(buffer);
+		return (print_error("extra parameters"));
+	}
+	return (0);
+}
+
+int	return_free(char *buff)
+{
+	free(buff);
+	return (1);
 }
