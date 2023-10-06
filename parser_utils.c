@@ -6,14 +6,16 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:21:00 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/04 17:40:44 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/06 13:49:00 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	fill_textures(t_data *data, char *line, int i, int index)
+int	fill_text(t_data *data, char *line, int i, int index)
 {
+	if (line[i] != ' ')
+		return (1);
 	if (data->texture[index])
 		return (print_error("Path duped"));
 	i = skip_spaces(line, i);
@@ -116,7 +118,7 @@ int	alloc_map(t_data *data, char **av)
 	}
 	if (!buffer[0])
 		buffer = skip_empty_lines(buffer, &mapfd);
-	if (alloc_map_2(v, buffer, mapfd, data))
+	if (!buffer || alloc_map_2(v, buffer, mapfd, data))
 		return (1);
 	//if (buffer)
 		//free(buffer);
