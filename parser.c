@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:05:20 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/06 13:52:08 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/06 14:46:53 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,6 @@ int	parser(char **av, t_data *data)
 	if (!check_cub(av))
 		return (print_error("wrong file type"));
 	i = check_file_data(av, data);
-	//if (check_file_format(av, data))
-		//return (1);
 	if (i == 0)
 		return (print_error("wrong parameters"));
 	else if (i == 2)

@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:21:00 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/06 13:49:00 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/06 14:47:07 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,5 @@ int	alloc_map(t_data *data, char **av)
 		buffer = skip_empty_lines(buffer, &mapfd);
 	if (!buffer || alloc_map_2(v, buffer, mapfd, data))
 		return (1);
-	//if (buffer)
-		//free(buffer);
 	return (0);
 }
