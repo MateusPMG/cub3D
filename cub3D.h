@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/06 14:31:55 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/06 15:23:54 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include "libft/libft.h"
+# include "./mlx_linux/mlx.h"
+# include <X11/keysym.h>
+
+# define WINX 1600
+# define WINY 900
 
 typedef struct s_data
 {
@@ -30,6 +35,9 @@ typedef struct s_data
 	int		gnl_x;
 	int		x;
 	int		y;
+	void	*mlx_ptr;
+	void	*win_ptr;
+	int		*images[4];
 
 }	t_data;
 
@@ -48,9 +56,6 @@ int		validate_map(t_data *data);
 char	*skip_empty_lines(char *buffer, int *mapfd);
 int		check_file_format(char **av, t_data *data);
 int		return_free(char *buff);
-
-
-
 
 //validate_map_utils.c
 int		check_walls(t_data *data, int j, int i);
