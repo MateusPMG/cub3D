@@ -1,6 +1,6 @@
 NAME = cub3D
 SRC = 	cub3D.c parser.c parser_utils.c parser_utils_2.c utils.c\
-validate_map.c validate_map_utils.c
+validate_map.c validate_map_utils.c handlers.c images.c 
 LIBFT_DIR	= libft
 LIBFT		= libft/libft.a
 MLX_DIR		= mlx_linux
