@@ -6,13 +6,13 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 13:28:52 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/10 13:45:36 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/10 14:36:45 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
 
-int	key_handler(int keycode, t_data *data)
+int	key_handler(int keycode)
 {
 	if (keycode == XK_A)
 		printf("%s\n", "pressed a");

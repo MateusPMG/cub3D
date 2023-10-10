@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 14:37:36 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/10 14:30:02 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/10 15:08:41 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ int	free_data(t_data *data)
 		if (data->texture[i])
 			free(data->texture[i]);
 		if (data->images[i])
+		{
 			mlx_destroy_image(data->mlx_ptr, data->images[i]->mlx_img);
+			free(data->images[i]);
+		}
 	}
 	if (data->win_ptr)
 	{
