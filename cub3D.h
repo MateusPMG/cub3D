@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/06 15:23:54 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/10 14:12:33 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,17 @@
 # define WINX 1600
 # define WINY 900
 
+
+typedef struct s_img2
+{
+	void	*mlx_img;
+	int		*addr;
+	int		bpp;
+	int		linelen;
+	int		endian;
+}	t_img2;
+
+
 typedef struct s_data
 {
 	char	**map;
@@ -37,7 +48,8 @@ typedef struct s_data
 	int		y;
 	void	*mlx_ptr;
 	void	*win_ptr;
-	int		*images[4];
+	t_img2	*images[4];
+	t_img2	image;
 
 }	t_data;
 
@@ -59,6 +71,13 @@ int		return_free(char *buff);
 
 //validate_map_utils.c
 int		check_walls(t_data *data, int j, int i);
+
+//images.c
+void	get_images(t_data *data);
+
+//handlers.c
+int		key_handler(int keycode, t_data *data);
+int		close_handler(t_data *data);
 
 //utils.c
 int		skip_spaces(char *str, int i);
