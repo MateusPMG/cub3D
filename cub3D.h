@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/11 16:16:08 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/11 16:40:39 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,8 @@ typedef struct s_data
 	t_cords	cam;
 	t_cords	rayd;
 	t_cords	delta;
-	t_cords	side;
+	t_cors	side;
+	t_cors	step;
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_img2	*images[4];
@@ -99,6 +100,7 @@ int		ray_init(t_data *data);
 //ray_casting_utils.c
 void	dirv_init(t_data *data);
 void	cplane_init(t_data *data);
+void	step_d(t_data *data);
 
 //handlers.c
 int		key_handler(int keycode);

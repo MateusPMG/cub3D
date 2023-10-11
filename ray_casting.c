@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 14:29:02 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/11 16:15:20 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/11 16:41:43 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ int	ray_cast(t_data *data)
 		data->cam.x = (2 * x) / ((double)WINX - 1);
 		data->rayd.x = (data->dirv.x) + (data->cplane.x) + (data->cam.x);
 		data->rayd.y = (data->dirv.y) + (data->cplane.y) + (data->cam.x);
+		data->delta.x = fabs(1 / data->rayd.x);
+		data->delta.y = fabs(1 / data->rayd.y);
+		step_d(data);
+
 	}
 	
 }
