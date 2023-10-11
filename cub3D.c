@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:25 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/10 14:34:20 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/11 15:24:33 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	mlx(t_data *data)
 		exit(1);
 	}
 	get_images(data);
-	//casting();
+	ray_init(data);
 	mlx_hook(data->win_ptr, 17, 1L << 17, close_handler, data);
 	mlx_hook(data->win_ptr, 2, 1L << 0, key_handler, data);
 	mlx_loop(data->mlx_ptr);
@@ -38,8 +38,8 @@ void	init_data(t_data *data)
 	data->c_floor = -1;
 	data->gnl_x = 0;
 	data->map_x = 0;
-	data->x = -1;
-	data->y = -1;
+	data->m_pos.x = -1;
+	data->m_pos.y = -1;
 }
 
 int	main(int ac, char **av)

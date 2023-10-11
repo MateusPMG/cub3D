@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 14:57:42 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/06 14:34:59 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/11 15:25:12 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,15 @@ int	check_dupe(char c, t_data *data, size_t i, size_t j)
 	a = data->map_x;
 	b = data->map_y;
 	if ((c == 'N' || c == 'S' || c == 'W' || c == 'E')
-		&& (data->x == -1 && data->y == -1))
+		&& (data->m_pos.x == -1 && data->m_pos.y == -1))
 	{
-		data->x = j;
-		data->y = i;
+		data->m_pos.x = j;
+		data->m_pos.y = i;
 	}
 	else if ((c == 'N' || c == 'S' || c == 'W' || c == 'E')
-		&& ((data->x != -1 && data->y != -1)
-			|| (data->x == 0 || data->x == a
-				|| data->y == b || data->y == 0)))
+		&& ((data->m_pos.x != -1 && data->m_pos.y != -1)
+			|| (data->m_pos.x == 0 || data->m_pos.x == a
+				|| data->m_pos.y == b || data->m_pos.y == 0)))
 		return (1);
 	return (0);
 }
@@ -87,7 +87,7 @@ int	validate_map(t_data *data)
 		}
 		i++;
 	}
-	if (data->x == -1)
+	if (data->m_pos.x == -1)
 		return (print_error("missing spawn"));
 	return (0);
 }

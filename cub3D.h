@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/10 14:36:56 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/11 16:16:08 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,18 @@ typedef struct s_img2
 	int		endian;
 }	t_img2;
 
+typedef struct s_cors
+{
+	int	x;
+	int	y;
+
+}	t_cors;
+
+typedef struct s_cords
+{
+	double	x;
+	double	y;
+}	t_cords;
 
 typedef struct s_data
 {
@@ -44,8 +56,14 @@ typedef struct s_data
 	size_t	map_x;
 	size_t	map_y;
 	int		gnl_x;
-	int		x;
-	int		y;
+	t_cors	m_pos;
+	t_cords	pos;
+	t_cords	cplane;
+	t_cords	dirv;
+	t_cords	cam;
+	t_cords	rayd;
+	t_cords	delta;
+	t_cords	side;
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_img2	*images[4];
@@ -74,6 +92,13 @@ int		check_walls(t_data *data, int j, int i);
 
 //images.c
 void	get_images(t_data *data);
+
+//ray_casting.c
+int		ray_init(t_data *data);
+
+//ray_casting_utils.c
+void	dirv_init(t_data *data);
+void	cplane_init(t_data *data);
 
 //handlers.c
 int		key_handler(int keycode);
