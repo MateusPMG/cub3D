@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 14:29:02 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/11 16:41:43 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/13 14:29:11 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	ray_init(t_data *data)
 int	ray_cast(t_data *data)
 {
 	int	x;
-	int	y;
 
 	x = -1;
 	while (++x < WINX)
@@ -37,7 +36,9 @@ int	ray_cast(t_data *data)
 		data->delta.x = fabs(1 / data->rayd.x);
 		data->delta.y = fabs(1 / data->rayd.y);
 		step_d(data);
-
+		dda(data);
+		cam_cal(data);
+		redraw();
+		cls();
 	}
-	
 }

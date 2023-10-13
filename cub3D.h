@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/11 16:40:39 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/13 15:47:43 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@
 
 # define WINX 1600
 # define WINY 900
-
+# define MOVESPEED 1.5
+# define ROTSPEED 1.0
+# define TEXTUREWID	64
 
 typedef struct s_img2
 {
@@ -53,6 +55,7 @@ typedef struct s_data
 	int		c_floor;
 	int		c_ceiling;
 	char	*texture[4];
+	int		**buffer;
 	size_t	map_x;
 	size_t	map_y;
 	int		gnl_x;
@@ -63,8 +66,18 @@ typedef struct s_data
 	t_cords	cam;
 	t_cords	rayd;
 	t_cords	delta;
-	t_cors	side;
+	t_cors	sidedis;
 	t_cors	step;
+	t_cors	tex;
+	double	winstep;
+	double	tex_pos;
+	double	wallx;
+	int		hit;
+	int		side;
+	int		perpwalldist;
+	int		lineheight;
+	int		drawstart;
+	int		drawend;
 	void	*mlx_ptr;
 	void	*win_ptr;
 	t_img2	*images[4];
@@ -101,6 +114,9 @@ int		ray_init(t_data *data);
 void	dirv_init(t_data *data);
 void	cplane_init(t_data *data);
 void	step_d(t_data *data);
+void	dda(t_data *data);
+void	cam_cal(t_data *data);
+
 
 //handlers.c
 int		key_handler(int keycode);
