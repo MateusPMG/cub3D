@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 14:53:01 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/13 15:48:20 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/17 15:49:48 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ void	step_d(t_data *data)
 
 void	dda(t_data *data)
 {
-
 	while (data->hit == 0)
 	{
 		if (data->sidedis.x < data->sidedis.y)
@@ -106,11 +105,8 @@ void	dda(t_data *data)
 		data->hit = 1;
 }
 
-void	cam_cal(t_data *data)
+void	cam_cal(t_data *data, int x)
 {
-	double	step;
-	double	tex_pos;
-
 	if (data->side == 0)
 		data->perpwalldist = (data->sidedis.x - data->delta.x);
 	else
@@ -131,6 +127,8 @@ void	cam_cal(t_data *data)
 	if ((data->side == 0 && data->rayd.x > 0)
 		|| (data->side == 1 && data->rayd.y < 0))
 		data->tex.x = TEXTUREWID - data->tex.x - 1;
-	step = (1.0 * TEXTUREWID) / (data->lineheight);
-	tex_pos = (data->drawstart + ((-WINY + data->lineheight) / 2)) * step;
+	data->winstep = (1.0 * TEXTUREWID) / (data->lineheight);
+	data->tex_pos = (data->drawstart + ((-WINY + data->lineheight) / 2)) 
+		* data->winstep;
+	color_map(data, x);
 }

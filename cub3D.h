@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/13 15:47:43 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/17 15:59:31 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include "libft/libft.h"
 # include "./mlx_linux/mlx.h"
 # include <X11/keysym.h>
+# include <math.h>
 
 # define WINX 1600
 # define WINY 900
@@ -115,8 +116,10 @@ void	dirv_init(t_data *data);
 void	cplane_init(t_data *data);
 void	step_d(t_data *data);
 void	dda(t_data *data);
-void	cam_cal(t_data *data);
+void	cam_cal(t_data *data, int x);
 
+//ray_casting_utils_2.c
+void	color_map(t_data *data, int x);
 
 //handlers.c
 int		key_handler(int keycode);
