@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:47:34 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/17 15:55:21 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/18 14:20:36 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,34 @@ void	color_map(t_data *data, int x)
 		data->image.addr[get_pixel(data->image, x, y)] = color;
 		y++;
 	}
+}
+
+void	color_ceiling_floor(t_data *data)
+{
+	int	i;
+	int	j;
+
+	j = -1;
+	while (++j < WINY)
+	{
+		i = -1;
+		while (++i < WINX)
+		{
+			if (j < (WINY / 2))
+				data->image.addr[get_pixel(data->image, i, j)]
+					= data->c_ceiling;
+			else 
+				data->image.addr[get_pixel(data->image, i, j)]
+					= data->c_floor;
+		}
+	}
+}
+
+int	game_loop(t_data *data)
+{
+	color_ceiling_floor(data);
+	ray_cast(data);
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->image.mlx_img,
+		0, 0);
+	return (0);
 }

@@ -6,11 +6,49 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:25 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/11 15:24:33 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/18 14:23:06 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+int	key_release(int key, t_data *data)
+{
+	if (key == XK_w)
+		data->key_states.w = 0;
+	if (key == XK_s)
+		data->key_states.s = 0;
+	if (key == XK_a)
+		data->key_states.a = 0;
+	if (key == XK_d)
+		data->key_states.d = 0;
+	if (key == XK_Left)
+		data->key_states.l = 0;
+	if (key == XK_Right)
+		data->key_states.r = 0;
+	//movement();
+	return (0);
+}
+
+int	key_press(int key, t_data *data)
+{
+	/* if (key == XK_Escape)
+		close_window(data); */
+	if (key == XK_w)
+		data->key_states.w = 1;
+	if (key == XK_s)
+		data->key_states.s = 1;
+	if (key == XK_a)
+		data->key_states.a = 1;
+	if (key == XK_d)
+		data->key_states.d = 1;
+	if (key == XK_Left)
+		data->key_states.l = 1;
+	if (key == XK_Right)
+		data->key_states.r = 1;
+	//movement();
+	return (0);
+}
 
 void	mlx(t_data *data)
 {
@@ -26,8 +64,9 @@ void	mlx(t_data *data)
 	}
 	get_images(data);
 	ray_init(data);
-	mlx_hook(data->win_ptr, 17, 1L << 17, close_handler, data);
-	mlx_hook(data->win_ptr, 2, 1L << 0, key_handler, data);
+	mlx_hook(data->win_ptr, KeyPress, KeyPressMask, key_press, data);
+	mlx_hook(data->win_ptr, KeyRelease, KeyReleaseMask, key_release, data);
+	mlx_loop_hook(data->mlx_ptr, game_loop, data);
 	mlx_loop(data->mlx_ptr);
 	return ;
 }

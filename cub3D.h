@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/17 15:59:31 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/18 14:19:24 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <fcntl.h>
 # include "libft/libft.h"
 # include "./mlx_linux/mlx.h"
+# include "./mlx_linux/mlx_int.h"
 # include <X11/keysym.h>
 # include <math.h>
 
@@ -50,6 +51,16 @@ typedef struct s_cords
 	double	y;
 }	t_cords;
 
+typedef struct s_keys
+{
+	int	w;
+	int	a;
+	int	s;
+	int	d;
+	int	l;
+	int	r;
+}	t_keys;
+
 typedef struct s_data
 {
 	char	**map;
@@ -57,6 +68,7 @@ typedef struct s_data
 	int		c_ceiling;
 	char	*texture[4];
 	int		**buffer;
+	t_keys	key_states;
 	size_t	map_x;
 	size_t	map_y;
 	int		gnl_x;
@@ -110,6 +122,8 @@ void	get_images(t_data *data);
 
 //ray_casting.c
 int		ray_init(t_data *data);
+int		ray_cast(t_data *data);
+
 
 //ray_casting_utils.c
 void	dirv_init(t_data *data);
@@ -120,6 +134,8 @@ void	cam_cal(t_data *data, int x);
 
 //ray_casting_utils_2.c
 void	color_map(t_data *data, int x);
+int		game_loop(t_data *data);
+
 
 //handlers.c
 int		key_handler(int keycode);
