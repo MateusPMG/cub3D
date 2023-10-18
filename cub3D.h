@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/18 14:53:13 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/18 16:54:36 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 
 # define WINX 1600
 # define WINY 900
-# define MOVESPEED 1.5
-# define ROTSPEED 1.0
+# define MOVESPEED 0.1
+# define ROTSPEED 0.05
 # define TEXTUREWID	64
 
 typedef struct s_img2
@@ -79,7 +79,7 @@ typedef struct s_data
 	t_cords	cam;
 	t_cords	rayd;
 	t_cords	delta;
-	t_cors	sidedis;
+	t_cords	sidedis;
 	t_cors	step;
 	t_cors	tex;
 	double	winstep;
@@ -136,10 +136,8 @@ void	cam_cal(t_data *data, int x);
 void	color_map(t_data *data, int x);
 int		game_loop(t_data *data);
 
-
-//handlers.c
-int		key_handler(int keycode);
-int		close_handler(t_data *data);
+//movement.c
+void	movement(t_data *data);
 
 //utils.c
 int		skip_spaces(char *str, int i);

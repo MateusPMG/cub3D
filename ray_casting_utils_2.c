@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:47:34 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/18 14:36:33 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/18 17:24:21 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ int	pick_tex(t_data *data)
 	if (data->side == 0)
 	{
 		if ((double)data->m_pos.x - data->pos.x > 0)
-			return (0);
+			return (2);
 		else
-			return (1);
+			return (3);
 	}
 	else
 	{
 		if ((double)data->m_pos.y - data->pos.y > 0)
-			return (2);
+			return (0);
 		else
-			return (3);
+			return (1);
 	}
 }
 
@@ -84,6 +84,8 @@ int	game_loop(t_data *data)
 {
 	color_ceiling_floor(data);
 	ray_cast(data);
+	/* data->m_pos.x = (int)data->pos.x;
+	data->m_pos.y = (int)data->pos.y; */
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->image.mlx_img,
 		0, 0);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 14:53:01 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/18 14:49:52 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/18 17:12:04 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,23 +112,23 @@ void	cam_cal(t_data *data, int x)
 	else
 		data->perpwalldist = (data->sidedis.y - data->delta.y);
 	data->lineheight = (int)(WINY / data->perpwalldist);
-	data->drawstart = (-data->lineheight / 2) + (WINY / 2);
-	data->drawend = (data->lineheight / 2) + (WINY / 2);
+	data->drawstart = (WINY - data->lineheight) / 2;
+	data->drawend = (data->lineheight + WINY) / 2;
 	if (data->drawstart < 0)
 		data->drawstart = 0;
 	if (data->drawend >= WINY)
-		data->drawend = WINY - 1;
+		data->drawend = WINY;
 	if (data->side == 0)
-		data->wallx = data->pos.y + (data->perpwalldist * data->rayd.y);
+		data->wallx = data->pos.y + data->perpwalldist * data->rayd.y;
 	else
-		data->wallx = data->pos.x + (data->perpwalldist * data->rayd.x);
-	data->wallx -= (int)data->wallx;
-	data->tex.x = (int)(data->wallx * TEXTUREWID);
-	if ((data->side == 0 && data->rayd.x > 0)
-		|| (data->side == 1 && data->rayd.y < 0))
+		data->wallx = data->pos.x + data->perpwalldist * data->rayd.x;
+	data->wallx -= floor(data->wallx);
+	data->tex.x = (int)(data->wallx * (double)TEXTUREWID);
+	if ((data->side == 0 && data->rayd.x < 0)
+		|| (data->side == 1 && data->rayd.y > 0))
 		data->tex.x = TEXTUREWID - data->tex.x - 1;
-	data->winstep = (1.0 * TEXTUREWID) / (data->lineheight);
-	data->tex_pos = (data->drawstart + ((-WINY + data->lineheight) / 2)) 
+	data->winstep = 1.0 * TEXTUREWID / data->lineheight;
+	data->tex_pos = (data->drawstart + (data->lineheight - WINY) / 2)
 		* data->winstep;
 	color_map(data, x);
 }
