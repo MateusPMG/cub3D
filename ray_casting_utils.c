@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 14:53:01 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/17 15:49:48 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/18 14:49:52 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,9 @@ void	dda(t_data *data)
 			data->m_pos.y += data->step.y;
 			data->side = 1;
 		}
+		if (data->map[data->m_pos.y][data->m_pos.x] == '1')
+			data->hit = 1;
 	}
-	if (data->map[data->m_pos.y][data->m_pos.x] == '1')
-		data->hit = 1;
 }
 
 void	cam_cal(t_data *data, int x)
@@ -111,7 +111,7 @@ void	cam_cal(t_data *data, int x)
 		data->perpwalldist = (data->sidedis.x - data->delta.x);
 	else
 		data->perpwalldist = (data->sidedis.y - data->delta.y);
-	data->lineheight = (WINY / data->perpwalldist);
+	data->lineheight = (int)(WINY / data->perpwalldist);
 	data->drawstart = (-data->lineheight / 2) + (WINY / 2);
 	data->drawend = (data->lineheight / 2) + (WINY / 2);
 	if (data->drawstart < 0)

@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:25 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/18 14:23:06 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/18 14:35:16 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int	key_release(int key, t_data *data)
 
 int	key_press(int key, t_data *data)
 {
-	/* if (key == XK_Escape)
-		close_window(data); */
+	if (key == XK_Escape)
+		close_window(data);
 	if (key == XK_w)
 		data->key_states.w = 1;
 	if (key == XK_s)

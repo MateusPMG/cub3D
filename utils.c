@@ -6,11 +6,17 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/31 14:37:36 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/10 15:08:41 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/18 14:26:42 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
+
+int	close_window(t_data *data)
+{
+	mlx_loop_end(data->mlx_ptr);
+	return (0);
+}
 
 int	skip_spaces(char *str, int i)
 {

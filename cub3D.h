@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/18 14:19:24 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/18 14:53:13 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ typedef struct s_data
 	double	wallx;
 	int		hit;
 	int		side;
-	int		perpwalldist;
+	double	perpwalldist;
 	int		lineheight;
 	int		drawstart;
 	int		drawend;
@@ -122,7 +122,7 @@ void	get_images(t_data *data);
 
 //ray_casting.c
 int		ray_init(t_data *data);
-int		ray_cast(t_data *data);
+void	ray_cast(t_data *data);
 
 
 //ray_casting_utils.c
@@ -146,5 +146,7 @@ int		skip_spaces(char *str, int i);
 int		print_error(char *str);
 int		free_double(char **array);
 int		free_data(t_data *data);
+int		close_window(t_data *data);
+
 
 #endif
