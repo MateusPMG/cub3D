@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 14:53:01 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/18 17:12:04 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/24 15:55:44 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ void	step_d(t_data *data)
 
 void	dda(t_data *data)
 {
+	data->hit = 0;
 	while (data->hit == 0)
 	{
 		if (data->sidedis.x < data->sidedis.y)
