@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/04 13:21:00 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/06 14:47:07 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/24 17:09:31 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ int	fill_text(t_data *data, char *line, int i, int index)
 	if (access(&line[i], R_OK) == -1)
 	{
 		print_error("Textures: Cant access path");
-		free_data(data);
-		exit (1);
+		return (1);
 	}
 	data->texture[index] = ft_substr(line, i, ft_strlen(line) - i);
 	return (0);

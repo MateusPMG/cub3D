@@ -7,7 +7,7 @@ LIBFT		= libft/libft.a
 MLX_DIR		= mlx_linux
 MLX_INCLUDE = -Imlx_linux
 CC			= @cc
-CFLAGS		= -Wall -Wextra -Werror -g3 -fsanitize=address,undefined
+CFLAGS		= -Wall -Wextra -Werror -g3 #-fsanitize=address,undefined
 MLX_FLAGS 	= -L$(MLX_DIR) -lmlx -lmlx_Linux -L/usr/lib -lXext -lX11 -lm
 
 all:		$(NAME)
@@ -25,6 +25,12 @@ fclean:		clean
 			@$(MAKE) --no-print-directory -C $(LIBFT_DIR) fclean
 			@$(MAKE) --no-print-directory -C $(MLX_DIR) clean
 			@rm -f $(NAME)
+
+test_val_wrong_map:	all
+	@for map_file in ./maps/wrong/*.cub; do \
+		echo "$$map_file"; \
+		valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME) $$map_file; \
+	done
 
 good:		all
 			@for file in ./maps/good/*; do \
