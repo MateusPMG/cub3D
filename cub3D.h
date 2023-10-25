@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/25 15:52:48 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/25 16:31:12 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@
 # include <X11/keysym.h>
 # include <math.h>
 
-# define WINX 1600
-# define WINY 900
-# define MOVESPEED 0.07
-# define ROTSPEED 0.07
+# define WINX 640
+# define WINY 480
+# define MOVESPEED 0.020
+# define ROTSPEED 0.020
 # define TEXTUREWID	64
 
 typedef struct s_img2
@@ -138,6 +138,8 @@ int		game_loop(t_data *data);
 
 //movement.c
 void	movement(t_data *data);
+int		rotate(t_data *data, double rot_speed);
+int		move(t_data *data, int flag, t_cords cam_dir);
 
 //utils.c
 int		skip_spaces(char *str, int i);

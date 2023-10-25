@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:47:34 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/25 15:26:09 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/25 16:09:08 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,18 @@ void	color_ceiling_floor(t_data *data)
 int	game_loop(t_data *data)
 {
 	color_ceiling_floor(data);
+	if (data->key_states.w)
+		move(data, 1, data->dirv);
+	if (data->key_states.s)
+		move(data, -1, data->dirv);
+	if (data->key_states.a)
+		move(data, -1, data->cplane);
+	if (data->key_states.d)
+		move(data, 1, data->cplane);
+	if (data->key_states.l)
+		rotate(data, -ROTSPEED);
+	if (data->key_states.r)
+		rotate(data, ROTSPEED);
 	ray_cast(data);
 	data->m_pos.x = (int)data->pos.x;
 	data->m_pos.y = (int)data->pos.y;
