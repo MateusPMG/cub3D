@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 14:57:42 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/11 15:25:12 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/25 14:24:07 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,10 @@ int	validate_map(t_data *data)
 	size_t	j;
 	size_t	i;
 
-	i = 0;
+	i = -1;
 	j = 0;
 	rectify_shape(data);
-	while (data->map[i])
+	while (data->map[++i])
 	{
 		j = 0;
 		while (data->map[i][j])
@@ -80,12 +80,13 @@ int	validate_map(t_data *data)
 			if (check_illegal(data->map[i][j])
 				|| check_dupe(data->map[i][j], data, i, j))
 				return (print_error("illegal char in map or char duped"));
-			if (data->map[i][j] == '0')
+			if (data->map[i][j] == '0' || data->map[i][j] == 'N' 
+				|| data->map[i][j] == 'S' || data->map[i][j] == 'W' 
+				|| data->map[i][j] == 'E')
 				if (check_walls(data, j, i))
 					return (print_error("invalid map: unclosed/illegal char"));
 			j++;
 		}
-		i++;
 	}
 	if (data->m_pos.x == -1)
 		return (print_error("missing spawn"));
