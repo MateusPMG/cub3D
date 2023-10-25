@@ -36,6 +36,7 @@ good:		all
 			@for file in ./maps/good/*; do \
 				echo "$$file"; \
 				./$(NAME) $$file; \
+				valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes ./$(NAME) $$map_file; \
 			done
 
 wrong:		all

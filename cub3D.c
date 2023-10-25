@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:25 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/24 16:44:06 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/25 15:36:49 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void	mlx(t_data *data)
 	ray_init(data);
 	mlx_hook(data->win_ptr, KeyPress, KeyPressMask, key_press, data);
 	mlx_hook(data->win_ptr, KeyRelease, KeyReleaseMask, key_release, data);
+	mlx_hook(data->win_ptr, DestroyNotify, KeyPressMask, close_window, data);
 	mlx_loop_hook(data->mlx_ptr, game_loop, data);
 	mlx_loop(data->mlx_ptr);
 	return ;

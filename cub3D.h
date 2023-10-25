@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 15:39:48 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/24 15:50:02 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/25 15:52:48 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 
 # define WINX 1600
 # define WINY 900
-# define MOVESPEED 0.1
-# define ROTSPEED 0.05
+# define MOVESPEED 0.07
+# define ROTSPEED 0.07
 # define TEXTUREWID	64
 
 typedef struct s_img2

@@ -6,7 +6,7 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 14:47:34 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/24 15:58:19 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/25 15:26:09 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ int	pick_tex(t_data *data)
 	if (!data->side)
 	{
 		if ((double)data->m_pos.x - data->pos.x > 0)
-			return (2);
-		else
 			return (3);
+		else
+			return (2);
 	}
 	else
 	{
 		if ((double)data->m_pos.y - data->pos.y > 0)
-			return (0);
-		else
 			return (1);
+		else
+			return (0);
 	}
 }
 
