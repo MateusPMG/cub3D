@@ -6,12 +6,11 @@
 /*   By: mpatrao <mpatrao@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/06 15:15:33 by mpatrao           #+#    #+#             */
-/*   Updated: 2023/10/25 16:57:14 by mpatrao          ###   ########.fr       */
+/*   Updated: 2023/10/27 14:33:55 by mpatrao          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3D.h"
-
 
 void	free_data_p(t_data *data)
 {
